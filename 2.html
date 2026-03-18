@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora MRUA</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select, button {
+            margin: 8px;
+            padding: 8px;
+            width: 90%;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #resultado {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora MRUA</h2>
+    <h3>Escribe el calculo que necesites</h3>
+
+    <select id="opcion">
+        <option disabled selected="1"> selecione una opcion </option>
+        <option value="1">Calcular velocidad final (Vf)</option>
+        <option value="2">Calcular Velocidad inicial (Vo)</option>
+        <option value="3">Calcular La Distancia (x)</option>
+        <option value="3">Calcular La aceleracion (a)</option>
+        <option value="3">Calcular el Tiempo (t)</option>
+
+    </select>
+
+    <input type="number" id="v0" placeholder="Velocidad inicial (v0)">
+    <input type="number" id="a" placeholder="Aceleración (a)">
+    <input type="number" id="t" placeholder="Tiempo (t)">
+    <input type="number" id="x0" placeholder="Posición inicial (x0)">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+function calcular() {
+    let opcion = document.getElementById("opcion").value;
+    let v0 = parseFloat(document.getElementById("v0").value) || 0;
+    let a = parseFloat(document.getElementById("a").value) || 0;
+    let t = parseFloat(document.getElementById("t").value) || 0;
+    let x0 = parseFloat(document.getElementById("x0").value) || 0;
+
+    let resultado = "";
+
+    if (opcion == "1") {
+        let v = v0 + a * t;
+        resultado = "Velocidad final = " + v;
+    }
+
+    if (opcion == "2") {
+        let x = x0 + v0 * t + 0.5 * a * t * t;
+        resultado = "Posición final = " + x;
+    }
+
+    document.getElementById("resultado").innerText = resultado;
+}
+</script>
+
+</body>
+</html>
+que indique que ya esta valeciada 
+y tambirn cuando no y que haga el valance 

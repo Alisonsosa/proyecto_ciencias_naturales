@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora MRU y MRUA</title>
+<meta charset="UTF-8">
+
+<style>
+        body {
+            font-family: Arial;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 30px;
+        }
+        .container {
+            background: rgb(137, 154, 255);
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
+            width: 50%;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-bottom: 50px;
+        }
+        #resultado {
+            margin-top: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Calculadora de MRU</h1>
+
+<input id="x" placeholder="Distancia (x)">
+<input id="v" placeholder="Velocidad (v)">
+<input id="t" placeholder="Tiempo (t)">
+
+<br>
+
+<button onclick="calcularMRU()">Calcular</button>
+
+<p id="resMRU"></p>
+
+<hr>
+
+<h1>Calculadora de MRUA</h1>
+
+<input id="vo" placeholder="Velocidad inicial (v0)">
+<input id="vf" placeholder="Velocidad final (vf)">
+<input id="a" placeholder="Aceleración (a)">
+<input id="x2" placeholder="Distancia (x)">
+<input id="t2" placeholder="Tiempo (t)">
+
+<br>
+
+<button onclick="calcularMRUA()">Calcular</button>
+
+<p id="resMRUA"></p>
+
+
+<script>
+
+function calcularMRU(){
+
+let x = parseFloat(document.getElementById("x").value);
+let v = parseFloat(document.getElementById("v").value);
+let t = parseFloat(document.getElementById("t").value);
+
+if(!x && v && t){
+x = v*t;
+}
+
+else if(!v && x && t){
+v = x/t;
+}
+
+else if(!t && x && v){
+t = x/v;
+}
+
+document.getElementById("resMRU").innerText =
+"x="+x+"  v="+v+"  t="+t;
+
+}
+
+
+function calcularMRUA(){
+
+let vo = parseFloat(document.getElementById("vo").value);
+let vf = parseFloat(document.getElementById("vf").value);
+let a = parseFloat(document.getElementById("a").value);
+let t = parseFloat(document.getElementById("t2").value);
+
+if(!vf && vo && a && t){
+vf = vo + a*t;
+}
+
+if(!vo && vf && a && t){
+vo = vf - a*t;
+}
+
+if(!a && vf && vo && t){
+a = (vf-vo)/t;
+}
+
+document.getElementById("resMRUA").innerText =
+"vo="+vo+"  vf="+vf+"  a="+a+"  t="+t;
+
+}
+
+</script>
+
+</body>
+</html>
